@@ -1,0 +1,26 @@
+# rules.example.toml - copy to rules.toml (or pass --rules rules.example.toml)
+# ollama-disk-doctor: friendly disk usage for local AI models.
+# Copyright (c) 2026 Asdale Dynamics, LLC. MIT licensed.
+
+# How many days until an untouched model counts as "stale" (reclaimable estimate
+# and plan targets are built from these). 90 days = "untouched for months".
+stale_days = 90
+
+[paths]
+# Where Ollama keeps models. Leave out to use the default ~/.ollama/models.
+ollama_models_dir = "~/.ollama/models"
+
+# OpenAI-compatible / HuggingFace-style caches to scan. Repeat freely.
+cache_dirs = [
+    "~/.cache/huggingface/hub",
+    "~/.cache/litellm/files",
+    "~/.cache/lm-studio/models",
+    "~/.cache/openai",
+]
+
+# Where the "move" plan suggests parking stale models (nothing is moved by us).
+archive_dir = "~/.ollama-archive"
+
+[look]
+# Width of the ASCII bar chart in characters.
+bar_width = 40
